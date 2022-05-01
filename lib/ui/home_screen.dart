@@ -2,10 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:santander/core/models/cards.dart';
 import 'package:santander/core/models/contacts.dart';
 import 'package:santander/ui/transfer_screen.dart';
 import 'package:santander/utils/image_path.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import '../core/models/payment_history.dart';
 
@@ -355,8 +357,10 @@ class HomeScreen extends StatelessWidget {
                                             ),
                                           ),
                                           Text(
-                                            DateTime.parse(expenses[index].date)
-                                                .toString(),
+                                            timeago.format(DateTime.parse(
+                                                  expenses[index].date)),
+                                                
+                                                
                                             style: GoogleFonts.poppins(
                                               color: Colors.grey,
                                               fontSize: 10,
@@ -424,4 +428,7 @@ class Headings extends StatelessWidget {
       ],
     );
   }
+
 }
+
+
