@@ -274,7 +274,7 @@ class _TransferScreenState extends State<TransferScreen> {
                 onTap: () {
                   if (amountController.text.isNotEmpty &&
                       commentController.text.isNotEmpty) {
-                    Toasts.showErrorToast("Unable to commplete transaction");
+                    Toasts.showErrorToast("Unable to Complete Transaction");
                   }
                 },
                 child: Container(
