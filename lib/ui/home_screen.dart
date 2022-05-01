@@ -358,9 +358,7 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                           Text(
                                             timeago.format(DateTime.parse(
-                                                  expenses[index].date)),
-                                                
-                                                
+                                                expenses[index].date)),
                                             style: GoogleFonts.poppins(
                                               color: Colors.grey,
                                               fontSize: 10,
@@ -371,7 +369,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                       const Spacer(),
                                       Text(
-                                        "1 ${expenses[index].ammount}\$",
+                                        "\$ -${expenses[index].ammount}",
                                         style: GoogleFonts.poppins(
                                           color: Colors.red,
                                           fontSize: 14,
@@ -428,7 +426,4 @@ class Headings extends StatelessWidget {
       ],
     );
   }
-
 }
-
-
