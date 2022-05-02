@@ -369,7 +369,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                       const Spacer(),
                                       Text(
-                                        "\$ -${expenses[index].ammount}",
+                                        " -${expenses[index].ammount} \$",
                                         style: GoogleFonts.poppins(
                                           color: Colors.red,
                                           fontSize: 14,
