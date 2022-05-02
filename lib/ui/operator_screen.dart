@@ -135,8 +135,8 @@ class _OperatorScreenState extends State<OperatorScreen> {
                                                     height: 50,
                                                     width: 50,
                                                     decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xFFE1DFDF),
+                                                        color: Colors.grey
+                                                            .withOpacity(0.2),
                                                         borderRadius:
                                                             const BorderRadius
                                                                 .all(

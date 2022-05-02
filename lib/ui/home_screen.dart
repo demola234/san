@@ -8,12 +8,23 @@ import 'package:santander/core/models/contacts.dart';
 import 'package:santander/ui/transfer_screen.dart';
 import 'package:santander/utils/image_path.dart';
 import 'package:timeago/timeago.dart' as timeago;
-
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import '../core/models/payment_history.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
   HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    FlutterNativeSplash.remove();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                         Stack(
                           children: [
                             const CircleAvatar(
-                              foregroundImage: AssetImage(ImagePath.avatars2),
+                              foregroundImage: AssetImage(ImagePath.user),
                             ),
                             Positioned(
                               left: 0,
@@ -71,8 +82,11 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {
-                                // Toasts.showErrorToast(
-                                //     "Unable to commplete transaction");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const TransferScreen()));
                               },
                               child: Container(
                                 height: 80,
@@ -190,100 +204,94 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Headings(
-                          name: "Send",
-                          title: "Money",
-                        ),
-                        const Spacer(),
-                        InkWell(
-                          onTap: () {},
-                          child: Text(
-                            "All Contacts",
-                            style: GoogleFonts.poppins(
-                              color: Colors.red,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const TransferScreen()));
-                              },
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(10.0),
-                                  ),
-                                ),
-                                child: const Icon(Icons.add),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          height: 70,
-                          width: MediaQuery.of(context).size.width - 90,
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: sendmoney.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 5),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 50,
-                                        width: 50,
-                                        decoration: BoxDecoration(
-                                            color: const Color(0xFFF6F6F6),
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                              Radius.circular(10.0),
-                                            ),
-                                            image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: AssetImage(
-                                                    sendmoney[index].img))),
-                                        // child: Image(
-                                        //   fit: BoxFit.cover,
-                                        //   image: AssetImage(sendmoney[index].img),
-                                        // ),
-                                      ),
-                                      Text(
-                                        sendmoney[index].text,
-                                        style: GoogleFonts.poppins(
-                                          color: Colors.black,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              }),
-                        )
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     Headings(
+                    //       name: "Send",
+                    //       title: "Money",
+                    //     ),
+                    //     const Spacer(),
+                    //     InkWell(
+                    //       onTap: () {},
+                    //       child: Text(
+                    //         "All Contacts",
+                    //         style: GoogleFonts.poppins(
+                    //           color: Colors.red,
+                    //           fontSize: 14,
+                    //           fontWeight: FontWeight.w600,
+                    //         ),
+                    //       ),
+                    //     )
+                    //   ],
+                    // ),
+                    // const SizedBox(height: 20),
+                    // Row(
+                    //   children: [
+                    //     Column(
+                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                    //       children: [
+                    //         InkWell(
+                    //           onTap: () {},
+                    //           child: Container(
+                    //             height: 50,
+                    //             width: 50,
+                    //             decoration: BoxDecoration(
+                    //               color: Colors.grey.withOpacity(0.2),
+                    //               borderRadius: const BorderRadius.all(
+                    //                 Radius.circular(10.0),
+                    //               ),
+                    //             ),
+                    //             child: const Icon(Icons.add),
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //     Container(
+                    //       height: 70,
+                    //       width: MediaQuery.of(context).size.width - 90,
+                    //       padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //       child: ListView.builder(
+                    //           scrollDirection: Axis.horizontal,
+                    //           itemCount: sendmoney.length,
+                    //           itemBuilder: (context, index) {
+                    //             return Padding(
+                    //               padding:
+                    //                   const EdgeInsets.symmetric(horizontal: 5),
+                    //               child: Column(
+                    //                 children: [
+                    //                   Container(
+                    //                     height: 50,
+                    //                     width: 50,
+                    //                     decoration: BoxDecoration(
+                    //                         color: const Color(0xFFF6F6F6),
+                    //                         borderRadius:
+                    //                             const BorderRadius.all(
+                    //                           Radius.circular(10.0),
+                    //                         ),
+                    //                         image: DecorationImage(
+                    //                             fit: BoxFit.cover,
+                    //                             image: AssetImage(
+                    //                                 sendmoney[index].img))),
+                    //                     // child: Image(
+                    //                     //   fit: BoxFit.cover,
+                    //                     //   image: AssetImage(sendmoney[index].img),
+                    //                     // ),
+                    //                   ),
+                    //                   Text(
+                    //                     sendmoney[index].text,
+                    //                     style: GoogleFonts.poppins(
+                    //                       color: Colors.black,
+                    //                       fontSize: 10,
+                    //                       fontWeight: FontWeight.w600,
+                    //                     ),
+                    //                   )
+                    //                 ],
+                    //               ),
+                    //             );
+                    //           }),
+                    //     )
+                    //   ],
+                    // ),
                     SizedBox(height: 20),
                     Row(
                       children: [
@@ -326,8 +334,7 @@ class HomeScreen extends StatelessWidget {
                                         height: 50,
                                         width: 50,
                                         decoration: BoxDecoration(
-                                            color: Color.fromARGB(
-                                                255, 206, 205, 205),
+                                            color: Colors.grey.withOpacity(0.2),
                                             borderRadius:
                                                 const BorderRadius.all(
                                               Radius.circular(10.0),
