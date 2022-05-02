@@ -21,14 +21,14 @@ List<CardsDetails> cardDetails = <CardsDetails>[
   CardsDetails(
     card: ImagePath.mastercard,
     cardtype: "Gold card",
-    ammount: "3221.34",
+    ammount: "170,368.00",
     lastno: "2122",
     color: Colors.red,
   ),
   CardsDetails(
     card: ImagePath.visacsard,
     cardtype: "Silver card",
-    ammount: "3221.34",
+    ammount: "2354.34",
     lastno: "1992",
     color: Color(0xFFF9EFDA),
   ),
@@ -42,8 +42,8 @@ List<CardsDetails> cardDetails = <CardsDetails>[
   CardsDetails(
     card: ImagePath.mastercard,
     cardtype: "Gold card",
-    ammount: "3221.34",
+    ammount: "0.31",
     lastno: "2122",
-    color: Colors.red,
+    color: Colors.yellow,
   ),
 ];
