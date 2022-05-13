@@ -176,14 +176,6 @@ class _TransferScreenState extends State<TransferScreen> {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        Text(
-                          "Alior Bank",
-                          style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
                       ],
                     ),
                     const Spacer(),
@@ -275,6 +267,10 @@ class _TransferScreenState extends State<TransferScreen> {
                   if (amountController.text.isNotEmpty &&
                       commentController.text.isNotEmpty) {
                     Toasts.showErrorToast("Unable to Complete Transaction");
+                  } else if (amountController.text.isEmpty &&
+                      commentController.text.isEmpty) {
+                    Toasts.showErrorToast(
+                        "Amount and Comment can not be empty");
                   }
                 },
                 child: Container(

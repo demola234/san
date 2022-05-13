@@ -43,7 +43,7 @@ List<CardsDetails> cardDetails = <CardsDetails>[
     card: ImagePath.mastercard,
     cardtype: "Gold card",
     ammount: "0.31",
-    lastno: "2122",
+    lastno: "3213",
     color: Colors.yellow,
   ),
 ];

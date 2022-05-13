@@ -35,4 +35,5 @@ class ImagePath {
   static const String lccc = "$_imageDir/lccc.png";
   static const String visacsard = "$_imageDir/visa.png";
   static const String visacard1 = "$_imageDir/visa1.png";
+  static const String logo = "assets/splash.png";
 }

@@ -19,7 +19,7 @@ class Toasts {
                   message,
                   maxLines: 5,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                   ),
                 ),
@@ -29,7 +29,7 @@ class Toasts {
         );
       },
       position: NotificationPosition.top,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     );
   }
 

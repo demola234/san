@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:santander/core/controller/nav_controller.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:santander/ui/login.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
       ),
       debugShowCheckedModeBanner: false,
-      home: const NavController(),
+      home:  Authentication(),
     ));
   }
 }

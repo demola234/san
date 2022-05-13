@@ -135,7 +135,7 @@ class _OperatorScreenState extends State<OperatorScreen> {
                                                     height: 50,
                                                     width: 50,
                                                     decoration: BoxDecoration(
-                                                        color: Colors.grey
+                                                        color: Colors.white
                                                             .withOpacity(0.2),
                                                         borderRadius:
                                                             const BorderRadius
@@ -174,8 +174,8 @@ class _OperatorScreenState extends State<OperatorScreen> {
                                                             .toString(),
                                                         style:
                                                             GoogleFonts.poppins(
-                                                          color: Colors.grey,
-                                                          fontSize: 12,
+                                                          color: Colors.black,
+                                                          fontSize: 10,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         ),
@@ -184,7 +184,7 @@ class _OperatorScreenState extends State<OperatorScreen> {
                                                   ),
                                                   const Spacer(),
                                                   Text(
-                                                    "- ${operators[index].ammount}\$",
+                                                    "- ${operators[index].amount}\$",
                                                     style: GoogleFonts.poppins(
                                                       color: Colors.red,
                                                       fontSize: 14,
@@ -251,7 +251,7 @@ class _OperatorScreenState extends State<OperatorScreen> {
                                           ),
                                           const Spacer(),
                                           Text(
-                                            "- ${operators[index].ammount}\$",
+                                            "- ${operators[index].amount}\$",
                                             style: GoogleFonts.poppins(
                                               color: Colors.red,
                                               fontSize: 14,
@@ -277,7 +277,7 @@ class _OperatorScreenState extends State<OperatorScreen> {
 }
 
 const String dateFormatter = 'MMMM dd, y';
-const String dateTime = 'jms';
+const String dateTime = 'jm';
 
 extension DateHelper on DateTime {
   String formatDate() {
