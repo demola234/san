@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:santander/utils/toasts.dart';
 
@@ -15,6 +16,7 @@ class TransferScreen extends StatefulWidget {
 class _TransferScreenState extends State<TransferScreen> {
   var amountController = TextEditingController();
   var commentController = TextEditingController();
+  var vaule;
 
   @override
   void dispose() {
@@ -147,47 +149,39 @@ class _TransferScreenState extends State<TransferScreen> {
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10.0),
-                          ),
-                          image: DecorationImage(
-                              fit: BoxFit.contain,
-                              image: AssetImage(ImagePath.lccc))),
-                      // child: Image(
-                      //   fit: BoxFit.cover,
-                      //   image: AssetImage(sendmoney[index].img),
-                      // ),
-                    ),
-                    const SizedBox(width: 10),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
+                    // Container(
+                    //   height: 50,
+                    //   width: 50,
+                    //   decoration: const BoxDecoration(
+                    //       color: Colors.white,
+                    //       borderRadius: BorderRadius.all(
+                    //         Radius.circular(10.0),
+                    //       ),
+                    //       image: DecorationImage(
+                    //           fit: BoxFit.contain,
+                    //           image: AssetImage(ImagePath.lccc))),
+                    //   // child: Image(
+                    //   //   fit: BoxFit.cover,
+                    //   //   image: AssetImage(sendmoney[index].img),
+                    //   // ),
+                    // ),
+                    // const SizedBox(width: 10),
+                    Flexible(
+                      child: ProbitasDropDown(
+                        hintText: "Choose Recipient",
+                        items: [
+                          "Angela James",
                           "Special love child care LLC",
-                          style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    InkWell(
-                      onTap: () {},
-                      child: Text(
-                        "Change",
-                        style: GoogleFonts.poppins(
-                          color: Colors.red,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
+                          "Cable",
+                          "Food",
+                          "James Douglas"
+                        ],
+                        value: vaule,
+                        onChanged: (value) {
+                          setState(() {
+                            vaule = value;
+                          });
+                        },
                       ),
                     ),
                   ],
@@ -296,5 +290,100 @@ class _TransferScreenState extends State<TransferScreen> {
         ),
       ),
     );
+  }
+}
+
+class ProbitasDropDown extends StatelessWidget {
+  final String? labelText;
+  final String? initialValue;
+  final Widget? textFieldIcon;
+  final bool enableInteractiveSelection;
+  final TextAlign textAlign;
+  final String? hintText;
+  final bool? obscureText;
+  final Widget? prefixIcon;
+  final TextInputType? inputType;
+  final String? Function(String? input)? validator;
+  final Function(String?)? onChanged;
+  final Function(String?)? onSaved;
+  final Function()? onEditingComplete;
+  final List<TextInputFormatter>? inputFormatters;
+  final int? maxLines;
+  final FocusNode? focusNode;
+  final TextEditingController? controller;
+  final bool enabled;
+  final List<String> items;
+  final String? value;
+
+  const ProbitasDropDown(
+      {Key? key,
+      this.labelText,
+      this.initialValue,
+      this.textFieldIcon,
+      this.inputType,
+      this.onChanged,
+      this.onEditingComplete,
+      this.onSaved,
+      this.validator,
+      this.inputFormatters,
+      this.maxLines = 1,
+      this.focusNode,
+      this.textAlign = TextAlign.start,
+      this.obscureText = false,
+      this.enableInteractiveSelection = true,
+      this.hintText,
+      this.prefixIcon,
+      this.controller,
+      required this.items,
+      required this.value,
+      this.enabled = true})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    return DropdownButtonFormField<String>(
+        isExpanded: true,
+        elevation: 0,
+        validator: validator,
+        onSaved: onSaved,
+        style: GoogleFonts.poppins(
+          color: Colors.black,
+        ),
+        decoration: InputDecoration(
+            fillColor: Colors.white.withOpacity(0.2),
+            filled: true,
+            prefixIcon: prefixIcon,
+            suffixIcon: textFieldIcon,
+            suffix: Text(
+              "Change",
+              style: GoogleFonts.poppins(
+                color: Colors.red,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            border: const OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.all(
+                Radius.circular(15.0),
+              ),
+            ),
+            focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.all(
+                Radius.circular(15.0),
+              ),
+            ),
+            hintText: hintText,
+            labelText: labelText,
+            labelStyle: GoogleFonts.poppins(color: Colors.black),
+            hintStyle: GoogleFonts.poppins(color: Colors.black)),
+        iconDisabledColor: Colors.white,
+        items: items
+            .map((e) => DropdownMenuItem<String>(value: e, child: Text("$e")))
+            .toList(),
+        onChanged: onChanged,
+        value: value);
   }
 }

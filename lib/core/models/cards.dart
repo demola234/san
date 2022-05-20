@@ -32,18 +32,4 @@ List<CardsDetails> cardDetails = <CardsDetails>[
     lastno: "1992",
     color: Color(0xFFF9EFDA),
   ),
-  CardsDetails(
-    card: ImagePath.visacsard,
-    cardtype: "Regular card",
-    ammount: "3412.34",
-    lastno: "1872",
-    color: Colors.blue,
-  ),
-  CardsDetails(
-    card: ImagePath.mastercard,
-    cardtype: "Gold card",
-    ammount: "0.31",
-    lastno: "3213",
-    color: Colors.yellow,
-  ),
 ];
